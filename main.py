@@ -12,7 +12,7 @@ app = FastAPI()
 async def root():
     return {"mesagge": "Bienvenido a su Tienda Virtual"} 
 
-@app.get('/productos') 
+@app.get('/productos/') 
 async def productos():
     return {"Base de Datos": producto_db.database_productos} 
 
