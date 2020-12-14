@@ -139,14 +139,14 @@ database_productos = {
                                 "categoria":"hogar",
                                 "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911023/Tienda/plants_vase01.jpg"}),
     "perfume": ProductoInDB(**{"productoname":"perfume",
-                                "precio":155900,
+                                "precio":101900,
                                 "descripcion":"Fino perfume Coco Chanel, con " +
                                 "aromas y fragancias frorales y con un leve toque frutal.",
                                 "existencia":16,
                                 "categoria":"mujeres",
                                 "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911011/Tienda/perfume03.jpg"}),
     "macbook": ProductoInDB(**{"productoname":"macbook",
-                                "precio":22900,
+                                "precio":3222900,
                                 "descripcion":"Poderoso 'portátil' de la marca " +
                                 "Apple con 4Tb de DD y 16 gigas de memoria RAM.",
                                 "existencia":14,
