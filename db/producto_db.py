@@ -103,6 +103,55 @@ database_productos = {
                                 "existencia":33,
                                 "categoria":"hogar",
                                 "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911019/Tienda/tableware_mug02.jpg"}),
+    "microscopio": ProductoInDB(**{"productoname":"microscopio",
+                                "precio":222900,
+                                "descripcion":"Microscopio potente con 64x de aumento, " +
+                                "para aprender y sorprenderse con lo que no se ve a simple vista.",
+                                "existencia":4,
+                                "categoria":"tecnología",
+                                "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911015/Tienda/technology_microscope.jpg"}),
+    "bandeja con rejilla": ProductoInDB(**{"productoname":"bandeja con rejilla",
+                                "precio":240900,
+                                "descripcion":"Bandeja adecuada para hornos en material " +
+                                "duradero y con garantía de fábrica.",
+                                "existencia":15,
+                                "categoria":"hogar",
+                                "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911020/Tienda/various_gridtray.jpg" }),
+    "camara": ProductoInDB(**{"productoname":"camara",
+                                "precio":125900,
+                                "descripcion":"Una hermosa cámara Fujifilm, " +
+                                "de 64Mp y con un lente de 35mm.",
+                                "existencia":5,
+                                "categoria":"tecnología",
+                                "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911021/Tienda/technology_camera_fujifilm.jpg"}),
+    "reloj inteligente": ProductoInDB(**{"productoname":"reloj inteligente",
+                                "precio":155900,
+                                "descripcion":"Smartwatch con potente procesador " +
+                                "contador de pasos, medidor de pulso y notificación de mensajes de redes.",
+                                "existencia":4,
+                                "categoria":"tecnología",
+                                "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911021/Tienda/technology_smartwatch01.jpg"}),
+    "jarron": ProductoInDB(**{"productoname":"jarron",
+                                "precio":22900,
+                                "descripcion":"Bello jarrón para tus plantas " +
+                                "artificiales o naturales.",
+                                "existencia":11,
+                                "categoria":"hogar",
+                                "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911023/Tienda/plants_vase01.jpg"}),
+    "perfume": ProductoInDB(**{"productoname":"perfume",
+                                "precio":155900,
+                                "descripcion":"Fino perfume Coco Chanel, con " +
+                                "aromas y fragancias frorales y con un leve toque frutal.",
+                                "existencia":16,
+                                "categoria":"mujeres",
+                                "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911011/Tienda/perfume03.jpg"}),
+    "macbook": ProductoInDB(**{"productoname":"macbook",
+                                "precio":22900,
+                                "descripcion":"Poderoso 'portátil' de la marca " +
+                                "Apple con 4Tb de DD y 16 gigas de memoria RAM.",
+                                "existencia":14,
+                                "categoria":"tecnología",
+                                "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911009/Tienda/technology_macbook.jpg"}),
 }
 
 def get_producto(productoname: str):
