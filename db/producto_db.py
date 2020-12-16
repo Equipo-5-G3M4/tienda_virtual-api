@@ -7,6 +7,7 @@ class ProductoInDB(BaseModel):
     descripcion: str
     existencia: int
     categoria: str
+    imagen: str
 
 database_productos = Dict[str, ProductoInDB]
 
