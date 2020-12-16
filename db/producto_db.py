@@ -164,3 +164,9 @@ def get_producto(productoname: str):
 def update_producto(producto_in_db: ProductoInDB):
     database_productos[producto_in_db.productoname] = producto_in_db
     return producto_in_db
+
+def get_productos():
+    productos = []
+    for e in database_productos:
+        productos.append(database_productos[e])
+    return productos
