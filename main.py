@@ -2,11 +2,23 @@ from db import producto_db
 from db.producto_db import database_productos
 from db.producto_db import ProductoInDB
 from db.producto_db import get_producto, update_producto 
+from db.producto_db import get_productos
 from models.producto_models import ProductoIn, ProductoOut
 from fastapi import FastAPI
 from fastapi import HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ["http://127.0.0.1:8080"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods = ["*"],
+    allow_headers = ["*"]
+)
 
 @app.get('/')
 async def root():
@@ -14,16 +26,17 @@ async def root():
 
 @app.get('/productos/') 
 async def productos():
-    return {"Base de Datos": producto_db.database_productos}
+    return get_productos()
 
 @app.get('/productos') 
 async def productos():
-    return {"Base de Datos": producto_db.database_productos}
+    print(productos)
+    return get_productos()
 
 @app.get('/productos/{productoname}')
 async def consultar_producto(productoname:str):
     if productoname in producto_db.database_productos:
-        return {"Base de Datos": producto_db.get_producto(productoname)}    
+        return producto_db.get_producto(productoname)   
     else:
         raise HTTPException(status_code=404, detail="El producto no existe")
 
