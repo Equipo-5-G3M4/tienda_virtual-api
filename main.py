@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = ["http://127.0.0.1:8080","http://localhost", "http://localhost:8080", "http://127.0.0.1:8000", "http://localhost:8000"]
+origins = ["http://127.0.0.1:8080","http://localhost", "http://localhost:8080", "http://127.0.0.1:8000", "http://localhost:8000", "https://tienda-virtual-app12.herokuapp.com"]
 
 app.add_middleware(
     CORSMiddleware,
