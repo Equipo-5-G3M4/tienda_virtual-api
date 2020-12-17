@@ -153,12 +153,7 @@ database_productos = {
                                 "existencia":14,
                                 "categoria":"tecnología",
                                 "imagen": "https://res.cloudinary.com/kiriloff/image/upload/v1607911009/Tienda/technology_macbook.jpg"}),
-    "buscar": ProductoInDB(**{"productoname": "",
-                                "precio":0,
-                                "descripcion":"",                                
-                                "existencia":0,
-                                "categoria":"",
-                                "imagen": ""}),
+    
 }
 
 def get_producto(productoname: str):
