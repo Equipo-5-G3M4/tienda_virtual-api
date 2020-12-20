@@ -1,4 +1,5 @@
 """ Models | DB """
+from os import access
 from db import producto_db, user_db
 from db.producto_db import (database_productos, ProductoInDB, update_producto, get_productos, get_producto_by_id, get_producto_by_name)
 from db.user_db import (database_users, UserInDB, get_user, update_user)
@@ -13,15 +14,19 @@ import uuid
 
 app = FastAPI()
 
-origins = ["http://127.0.0.1:8080","http://localhost", "http://localhost:8080", "http://127.0.0.1:8000", "http://localhost:8000", "https://tienda-virtual-app12.herokuapp.com"]
+origins = ["http://127.0.0.1:8080","http://localhost", "http://localhost:8080",
+        "http://127.0.0.1:8000", "http://localhost:8000", 
+        "https://tienda-virtual-app12.herokuapp.com", ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins= origins,
     allow_credentials=True,
     allow_methods = ["*"],
-    allow_headers = ["*"]
+    allow_headers = ["*"],
+
 )
+
 
 @app.get('/')
 async def root():
@@ -119,14 +124,26 @@ async def consultar_usuario(username:str):
         return {"Base de Datos": user_db.get_user(username)}    
     else:
         raise HTTPException(status_code=404, detail="El usuario no existe")
-
+'''
 @app.post('/user/auth/')
 async def crear_usuario(usuario:UserInDB):
     user_db.database_users[usuario.username]= usuario
     return usuario
+'''
 
-@app.post('/user/auth')
-async def crear_usuario(usuario:UserInDB):
+@app.post('/user/auth/')
+async def auth_user(usuario:UserIn):
+    user_in_db = UserInDB.username
+    if user_in_db == None:
+        raise HTTPException(status_code=404, detail="El usuario no existe")
+    if user_in_db.password != UserInDB.password:
+        raise HTTPException(status_code=403, detail="Error de autenticacion")
+
+
+
+
+
+
     user_db.database_users[usuario.username]= usuario
     return usuario
 
