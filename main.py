@@ -124,29 +124,16 @@ async def consultar_usuario(username:str):
         return {"Base de Datos": user_db.get_user(username)}    
     else:
         raise HTTPException(status_code=404, detail="El usuario no existe")
-'''
-@app.post('/user/auth/')
-async def crear_usuario(usuario:UserInDB):
-    user_db.database_users[usuario.username]= usuario
-    return usuario
-'''
 
 @app.post('/user/auth/')
 async def auth_user(usuario:UserIn):
-    user_in_db = UserInDB.username
+    user_in_db = get_user(usuario.username)
     if user_in_db == None:
         raise HTTPException(status_code=404, detail="El usuario no existe")
-    if user_in_db.password != UserInDB.password:
-        raise HTTPException(status_code=403, detail="Error de autenticacion")
-
-
-
-
-
-
-    user_db.database_users[usuario.username]= usuario
-    return usuario
-
+    else:
+	    if user_in_db.password != usuario.password:
+	        raise HTTPException(status_code=403, detail="Error de autenticación")
+	
 @app.delete('/user/auth/')
 async def borrar_usuario(user_out:UserOut):
     user_in_db = get_user(user_out.username)
