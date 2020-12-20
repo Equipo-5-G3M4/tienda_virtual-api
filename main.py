@@ -4,6 +4,13 @@ from db.producto_db import ProductoInDB
 from db.producto_db import get_producto, update_producto 
 from db.producto_db import get_productos
 from models.producto_models import ProductoIn, ProductoOut
+
+from db import user_db
+from db.user_db import database_users
+from db.user_db import UserInDB
+from db.user_db import get_user, update_user
+from models.user_models import UserIn, UserOut
+
 from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -83,3 +90,62 @@ async def actualizar_producto(producto:ProductoInDB):
         return producto
     else:
         raise HTTPException(status_code=404, detail="El producto no existe")
+
+@app.get('/usuarios/') 
+async def usuarios():
+    return {"Base de Datos": user_db.database_users}
+
+@app.get('/usuarios') 
+async def usuarios():
+    return {"Base de Datos": user_db.database_users}
+
+@app.get('/usuarios/{username}')
+async def consultar_usuario(username:str):
+    if username in user_db.database_users:
+        return {"Base de Datos": user_db.get_user(username)}    
+    else:
+        raise HTTPException(status_code=404, detail="El usuario no existe")
+
+@app.post('/usuarios/')
+async def crear_usuario(usuario:UserInDB):
+    user_db.database_users[usuario.username]= usuario
+    return usuario
+
+@app.post('/usuarios')
+async def crear_usuario(usuario:UserInDB):
+    user_db.database_users[usuario.username]= usuario
+    return usuario
+
+@app.delete('/usuarios/')
+async def borrar_usuario(user_out:UserOut):
+    user_in_db = get_user(user_out.username)
+    if user_in_db == None:
+        raise HTTPException(status_code=404, detail="El usuario no existe")
+    else:
+        del user_db.database_users[user_out.username]
+        return {"detail": "El usuario fue borrado"}
+
+@app.delete('/usuarios')
+async def borrar_usuario(user_out:UserOut):
+    user_in_db = get_user(user_out.username)
+    if user_in_db == None:
+        raise HTTPException(status_code=404, detail="El usuario no existe")
+    else:
+        del user_db.database_users[user_out.username]
+        return {"detail": "El usuario fue borrado"}
+
+@app.put('/usuarios/')
+async def actualizar_usuario(usuario:UserInDB):
+    if usuario.username in database_users:
+        user_db.database_users[usuario.username]= usuario
+        return usuario
+    else:
+        raise HTTPException(status_code=404, detail="El usuario no existe") 
+
+@app.put('/usuarios')
+async def actualizar_usuario(usuario:UserInDB):
+    if usuario.productoname in database_users:
+        user_db.database_users[usuario.username]= usuario
+        return usuario
+    else:
+        raise HTTPException(status_code=404, detail="El usuario no existe")
