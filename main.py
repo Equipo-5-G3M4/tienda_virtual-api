@@ -4,11 +4,19 @@ from db.producto_db import ProductoInDB
 from db.producto_db import get_producto, update_producto 
 from db.producto_db import get_productos
 from models.producto_models import ProductoIn, ProductoOut
+<<<<<<< HEAD
+=======
+
+>>>>>>> desarrollo
 from db import user_db
 from db.user_db import database_users
 from db.user_db import UserInDB
 from db.user_db import get_user, update_user
 from models.user_models import UserIn, UserOut
+<<<<<<< HEAD
+=======
+
+>>>>>>> desarrollo
 from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -147,5 +155,9 @@ async def actualizar_usuario(usuario:UserInDB):
         user_db.database_users[usuario.username]= usuario
         return usuario
     else:
+<<<<<<< HEAD
         raise HTTPException(status_code=404, detail="El usuario no existe")
 
+=======
+        raise HTTPException(status_code=404, detail="El usuario no existe")
+>>>>>>> desarrollo
