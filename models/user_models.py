@@ -5,8 +5,4 @@ class UserIn(BaseModel):
     password: str
     
 class UserOut(BaseModel):
-<<<<<<< HEAD
     username: str
-=======
-    username: str
->>>>>>> desarrollo
