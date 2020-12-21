@@ -1,16 +1,16 @@
 from typing import (Dict, List)
 from pydantic import BaseModel
 
+
 class ProductoInDB(BaseModel):
     idProducto: str
-    productoname: str    
+    productoname: str
     precio: int
     descripcion: str
     existencia: int
     categoria: List[str]
     imagen: str
 
-database_productos = Dict[str, ProductoInDB]
 
 database_productos = {
     "02297a70-2839-45dc-aead-8fed7241580a": ProductoInDB(**{
@@ -210,11 +210,11 @@ def get_producto_by_name(productoName: str):
         if producto.productoname == productoName:
             return producto
     return None
-    
 
 def update_producto(producto_in_db: ProductoInDB):
     database_productos[producto_in_db.productoname] = producto_in_db
     return producto_in_db
+
 
 def get_productos():
     productos = []

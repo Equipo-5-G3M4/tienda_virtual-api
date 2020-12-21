@@ -1,10 +1,13 @@
+
 """ Models | DB """
 from os import access
-from db import producto_db, user_db
+from db import producto_db, user_db, categoria_db
 from db.producto_db import (database_productos, ProductoInDB, update_producto, get_productos, get_producto_by_id, get_producto_by_name)
 from db.user_db import (database_users, UserInDB, get_user, update_user)
+from db.categoria_db import (CategoriaInDB, insert_categoria, select_categorias, select_categoria, update_categoria, delete_categoria)
 from models.producto_models import (ProductoIn, ProductoOut)
 from models.user_models import (UserIn, UserOut)
+from models.categoria_models import CategoriaIn, CategoriaOut
 """ FASTAPI """
 from fastapi import FastAPI
 from fastapi import HTTPException
@@ -167,3 +170,48 @@ async def actualizar_usuario(usuario:UserInDB):
         return usuario
     else:
         raise HTTPException(status_code=404, detail="El usuario no existe")
+
+
+"""          --------------      """
+"""             Categoria        """
+"""          --------------      """
+
+
+@app.get('/info/{categoria}')
+async def consultar_categoria(categoria: str):
+    categoria_in_db = select_categoria(categoria)
+    if categoria_in_db is None:
+        raise HTTPException(status_code=404, detail="La categoria no existe")
+    productos_out = []
+    productos_in_db = get_productos()
+    for elem in productos_in_db:
+        if categoria in elem.categoria:
+            productos_out.append(elem)
+    return productos_out
+
+@app.get('/info/categorias/')
+async def consultar_categorias():
+    categorias = select_categorias()
+    return categorias
+
+@app.post('/agregar/categoria/')
+async def crear_categoria(categoria_in_db: CategoriaInDB):
+    categoria = insert_categoria(categoria_in_db)
+    if categoria is None:
+        raise HTTPException(status_code=404, detail="La categoria ya existe")
+    return categoria
+
+@app.put('/actualizar/categoria/')
+async def actualizar_categoria(categoria_in_db: CategoriaInDB):
+    categoria = update_categoria(categoria_in_db)
+    if categoria is None:
+        raise HTTPException(status_code=404, detail="La categoria no existe")
+    return categoria
+
+@app.delete('/eliminar/{categoria}')
+async def delete_categoria(categoria: str):
+    categoria_in_db = delete_categoria(categoria)
+    if categoria_in_db is None:
+        raise HTTPException(status_code=404, detail="La categoria no existe")
+    return categoria_in_db
+#falta eliminar de los productos la categoria
