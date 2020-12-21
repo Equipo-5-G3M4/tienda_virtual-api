@@ -1,36 +1,14 @@
-<<<<<<< HEAD
-from db import producto_db
-from db.producto_db import database_productos
-from db.producto_db import ProductoInDB
-from db.producto_db import get_producto, update_producto 
-from db.producto_db import get_productos
-from models.producto_models import ProductoIn, ProductoOut
 
-from db import user_db
-from db.user_db import database_users
-from db.user_db import UserInDB
-from db.user_db import get_user, update_user
-from models.user_models import UserIn, UserOut
-
-from db import categoria_db
-from db.categoria_db import CategoriaInDB
-from db.categoria_db import insert_categoria
-from db.categoria_db import select_categorias, select_categoria
-from db.categoria_db import update_categoria, delete_categoria
-from models import categoria_models
-from models.categoria_models import CategoriaIn, CategoriaOut
-
-
-=======
 """ Models | DB """
 from os import access
-from db import producto_db, user_db
+from db import producto_db, user_db, categoria_db
 from db.producto_db import (database_productos, ProductoInDB, update_producto, get_productos, get_producto_by_id, get_producto_by_name)
 from db.user_db import (database_users, UserInDB, get_user, update_user)
+from db.categoria_db import (CategoriaInDB, insert_categoria, select_categorias, select_categoria, update_categoria, delete_categoria)
 from models.producto_models import (ProductoIn, ProductoOut)
 from models.user_models import (UserIn, UserOut)
+from models.categoria_models import CategoriaIn, CategoriaOut
 """ FASTAPI """
->>>>>>> main
 from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -192,6 +170,11 @@ async def actualizar_usuario(usuario:UserInDB):
         return usuario
     else:
         raise HTTPException(status_code=404, detail="El usuario no existe")
+
+
+"""          --------------      """
+"""             Categoria        """
+"""          --------------      """
 
 
 @app.get('/info/{categoria}')
