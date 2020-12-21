@@ -10,9 +10,14 @@ class CategoriaInDB(BaseModel):
 database_categorias = {
     0: CategoriaInDB(**{'id': 0, 'nombre': 'deportes', 'imagen': "url"}),
     1: CategoriaInDB(**{'id': 1, 'nombre': 'fitness', 'imagen': "url"}),
-    2: CategoriaInDB(**{'id': 2, 'nombre': 'relojes', 'imagen': "url"})
+    2: CategoriaInDB(**{'id': 2, 'nombre': 'relojes', 'imagen': "url"}),
+    3: CategoriaInDB(**{'id': 3, 'nombre': 'tecnología', 'imagen': "url"}),
+    4: CategoriaInDB(**{'id': 4, 'nombre': 'hogar', 'imagen': "url"}),
+    5: CategoriaInDB(**{'id': 5, 'nombre': 'gafas', 'imagen': "url"}),
+    7: CategoriaInDB(**{'id': 6, 'nombre': 'mujeres', 'imagen': "url"}),
+    8: CategoriaInDB(**{'id': 7, 'nombre': 'hombres', 'imagen': "url"})
 }
-generador = {'id': 3}
+generador = {'id': 9}
 
 
 def insert_categoria(categoria_in_db: CategoriaInDB):
