@@ -14,8 +14,8 @@ database_categorias = {
     3: CategoriaInDB(**{'id': 3, 'nombre': 'tecnología', 'imagen': "url"}),
     4: CategoriaInDB(**{'id': 4, 'nombre': 'hogar', 'imagen': "url"}),
     5: CategoriaInDB(**{'id': 5, 'nombre': 'gafas', 'imagen': "url"}),
-    7: CategoriaInDB(**{'id': 6, 'nombre': 'mujeres', 'imagen': "url"}),
-    8: CategoriaInDB(**{'id': 7, 'nombre': 'hombres', 'imagen': "url"})
+    6: CategoriaInDB(**{'id': 6, 'nombre': 'mujeres', 'imagen': "url"}),
+    7: CategoriaInDB(**{'id': 7, 'nombre': 'hombres', 'imagen': "url"})
 }
 generador = {'id': 9}
 
